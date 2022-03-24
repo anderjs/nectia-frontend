@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "*",
+        "jspm_packages/npm/*"
+      ]
+    },
     "target": "es5",
     "lib": [
       "dom",
