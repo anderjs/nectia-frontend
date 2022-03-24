@@ -3,12 +3,12 @@ import {
   Button,
   Divider,
   Grid,
+  IconButton,
   InputAdornment,
   TextField,
   Typography,
 } from "@mui/material";
 
-import { Box } from "@mui/system";
 
 import {
   AccountCircle,
@@ -23,6 +23,8 @@ import useToggle from "src/hooks/useToggle";
 // - Assets
 import settings from "src/assets/img/settings.png";
 import data from "src/assets/img/data.png";
+import atom from "src/assets/img/atom.png";
+
 import Color from "src/assets/colors";
 
 // - CSS Modules
@@ -36,10 +38,6 @@ const View: React.FunctionComponent = () => {
 
   const mask = useToggle();
 
-  const handleClickButton = () => {
-    mask.handleSwitchStatus();
-  };
-
   return (
     <div className={styles.layout}>
       <Grid container>
@@ -51,16 +49,20 @@ const View: React.FunctionComponent = () => {
             </Typography>
             <Grid item xs={12}>
               <TextField
+                autoComplete="new-password"
+                variant="outlined"
+                onChange={handleChange}
+                value={form.username}
+                type="text"
+                placeholder="nectia@software.com..."
                 label="Username"
                 name="username"
-                placeholder="nectia@software.com..."
-                onChange={handleChange}
-                type="text"
-                value={form.username}
-                inputProps={{
-                  startAdornment: (
+                InputProps={{
+                  endAdornment: (
                     <InputAdornment position="start">
-                      <AccountCircle />
+                      <IconButton edge="end">
+                        <AccountCircle />
+                      </IconButton>
                     </InputAdornment>
                   ),
                 }}
@@ -69,19 +71,25 @@ const View: React.FunctionComponent = () => {
             <br />
             <Grid item xs={12}>
               <TextField
+                autoComplete="new-password"
+                variant="outlined"
+                onChange={handleChange}
+                value={form.password}
+                type={mask.status ? "text" : "password"}
+                placeholder="********"
                 label="Password"
                 name="password"
-                placeholder="********"
-                onChange={handleChange}
-                type="password"
-                value={form.password}
-                inputProps={{
+                InputProps={{
                   endAdornment: (
-                    <Box component="div" onClick={handleClickButton}>
-                      <InputAdornment position="end">
+                    <InputAdornment position="end">
+                      <IconButton
+                        edge="end"
+                        aria-label="Password Mask"
+                        onClick={() => mask.handleSwitchStatus()}
+                      >
                         {mask.status ? <RemoveRedEye /> : <RemoveRedEyeSharp />}
-                      </InputAdornment>
-                    </Box>
+                      </IconButton>
+                    </InputAdornment>
                   ),
                 }}
               />
@@ -95,7 +103,11 @@ const View: React.FunctionComponent = () => {
                 Not a member? Create an account
               </Typography>
               <br />
-              <Button className={styles.information} variant="outlined">
+              <Button
+                color="primary"
+                className={styles.information}
+                variant="contained"
+              >
                 Login
               </Button>
             </Grid>
@@ -123,7 +135,7 @@ const View: React.FunctionComponent = () => {
           <Divider />
           <div className={styles.information}>
             <Typography
-              color={Color.INFO}
+              color={Color.PRIMARY}
               textAlign="center"
               variant="overline"
             >
@@ -133,6 +145,10 @@ const View: React.FunctionComponent = () => {
               helps to make sure that the users are able to access the website
               or application.
             </Typography>
+          </div>
+          <Divider />
+          <div className={styles.information}>
+            <img alt="develop by" src={atom} />
           </div>
         </Grid>
       </Grid>

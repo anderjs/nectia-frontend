@@ -24,14 +24,14 @@ export const Theme = createTheme({
       defaultProps: {
         autoFocus: true,
         InputLabelProps: {
-          color: "primary"
+          color: "primary",
         },
         InputProps: {
           autoComplete: "new-password",
           color: "secondary",
-          inputProps: {
-            className: styles.field
-          }
+        },
+        inputProps: {
+          "aria-autocomplete": "list",
         },
         variant: "filled"
       }

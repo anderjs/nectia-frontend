@@ -12,9 +12,9 @@ export default function useToggle (initialState?: boolean) {
    * @description
    * Toggle the state to the opposite of what it is currently.
    */
-  const handleToggleFunction = () : void => {
+  const handleToggleFunction = React.useCallback(() : void => {
     setState((currentState) => !currentState);
-  };
+  }, []);
 
   return {
     status: state,
