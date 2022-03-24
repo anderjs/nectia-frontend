@@ -5,3 +5,7 @@ export interface AuthState {
 export interface UsersState {
   loading: boolean
 }
+
+export interface StoreRootApplication { 
+  authentication: AuthState;
+}
