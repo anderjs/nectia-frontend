@@ -1,0 +1,19 @@
+.layout {
+  margin-top: 2.5rem;
+}
+
+.information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  margin-top: 5px;
+}
+
+.link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  transition: ease-in-out 0.4s;
+}
