@@ -3,6 +3,7 @@ import { StoreRootApplication } from "src/@types";
 
 // - Store Reducers
 import authentication from "./authentication";
+import products from "./products";
 
 /**
  * @description
@@ -10,5 +11,6 @@ import authentication from "./authentication";
  * @see https://redux.js.org/api/combinereducers
  */
 export default combineReducers<StoreRootApplication>({
-  authentication
+  authentication,
+  products
 });
