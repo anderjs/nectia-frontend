@@ -1,17 +1,18 @@
 export interface AuthState {
-  user: null
+  user: User | null;
+  loading: boolean;
 }
 
 export interface UsersState {
-  loading: boolean
+  loading: boolean;
 }
 
 export interface ProductsState {
-  loading: boolean
-  data: Array<Product>
+  loading: boolean;
+  data: Array<Product>;
 }
 
-export interface StoreRootApplication { 
+export interface StoreRootApplication {
   authentication: AuthState;
   products: ProductsState;
 }
@@ -24,4 +25,15 @@ export interface Product {
   sku: number;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface User {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  createdAt: Date;
+  updatedAt: Date;
+  token: string;
 }

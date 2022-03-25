@@ -14,27 +14,46 @@ import { Theme as injectedThemeStyles } from "./context";
 
 // - Router
 import { Router } from "./constants";
+import Products from "./pages/products";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <ThemeProvider theme={injectedThemeStyles}>
-      <Layout>
-        <BrowserRouter>
-          <Routes>
-            {/** Public Routes */}
-            <Route path={Router.HOME} element={<View />} />
-            {/** Private Routes */}
-            <Route
-              path={Router.DASHBOARD}
-              element={
-                <Private>
-                  <Dashboard />
-                </Private>
-              }
-            />
-          </Routes>
-        </BrowserRouter>
-      </Layout>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        rtl={false}
+        draggable
+        pauseOnHover
+        pauseOnFocusLoss
+      >
+        <Layout>
+          <BrowserRouter>
+            <Routes>
+              <Route path={Router.HOME} element={<View />} />
+              <Route
+                path={Router.DASHBOARD}
+                element={
+                  <Private>
+                    <Dashboard />
+                  </Private>
+                }
+              />
+              <Route
+                path={Router.PRODUCTS}
+                element={
+                  <Private>
+                    <Products />
+                  </Private>
+                }
+              />
+            </Routes>
+          </BrowserRouter>
+        </Layout>
+      </ToastContainer>
     </ThemeProvider>
   );
 };

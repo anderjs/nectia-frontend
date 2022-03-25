@@ -9,7 +9,6 @@ import {
   Typography,
 } from "@mui/material";
 
-
 import {
   AccountCircle,
   RemoveRedEye,
@@ -17,6 +16,7 @@ import {
 } from "@mui/icons-material";
 
 // - Hooks
+import useAuth from "src/hooks/useAuth";
 import useForm from "src/hooks/useForm";
 import useToggle from "src/hooks/useToggle";
 
@@ -32,11 +32,13 @@ import styles from "./styles.module.css";
 
 const View: React.FunctionComponent = () => {
   const { form, handleChange } = useForm({
-    username: "",
+    email: "",
     password: "",
   });
 
   const mask = useToggle();
+
+  const { handleAuthenticate, user, loading } = useAuth();
 
   return (
     <div className={styles.layout}>
@@ -52,8 +54,8 @@ const View: React.FunctionComponent = () => {
                 autoComplete="new-password"
                 variant="outlined"
                 onChange={handleChange}
-                value={form.username}
-                type="text"
+                value={form.email}
+                type="email"
                 placeholder="nectia@software.com..."
                 label="Username"
                 name="username"
@@ -107,6 +109,7 @@ const View: React.FunctionComponent = () => {
                 color="primary"
                 className={styles.information}
                 variant="contained"
+                onClick={() => handleAuthenticate(form.email, form.password)}
               >
                 Login
               </Button>
