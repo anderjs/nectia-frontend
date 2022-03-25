@@ -2,8 +2,6 @@ import { createTheme } from "@mui/material";
 
 import Color from "src/assets/colors";
 
-import styles from './styles.module.css';
-
 export const Theme = createTheme({
   palette: {
     primary: {

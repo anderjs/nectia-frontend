@@ -38,7 +38,7 @@ const View: React.FunctionComponent = () => {
 
   const mask = useToggle();
 
-  const { handleAuthenticate, user, loading } = useAuth();
+  const { handleAuthenticate } = useAuth();
 
   return (
     <div className={styles.layout}>
